@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ahmed Abu Omar — Digital Designer & Web Creator</title>
+
+  <meta name="description" content="Ahmed Abu Omar — Web Design, Digital Products, CV Design and Creative Digital Experiences.">
+  <meta name="author" content="Ahmed Abu Omar">
+
+  <meta property="og:title" content="Ahmed Abu Omar — Digital Creator">
+  <meta property="og:description" content="Web Design • Digital Products • CV Design">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070707;
+      --surface:#101010;
+      --surface2:#151515;
+      --text:#f4f1e8;
+      --muted:#9c9a93;
+      --gold:#d8b56a;
+      --line:rgba(255,255,255,.10);
+      --max:1240px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:"DM Sans",sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(var(--max),calc(100% - 40px));
+      margin:auto;
+    }
+
+    /* CURSOR */
+
+    .cursor{
+      position:fixed;
+      width:10px;
+      height:10px;
+      background:var(--gold);
+      border-radius:50%;
+      pointer-events:none;
+      z-index:9999;
+      transform:translate(-50%,-50%);
+      transition:.12s ease;
+      mix-blend-mode:difference;
+    }
+
+    /* NAV */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      padding:24px 0;
+      backdrop-filter:blur(16px);
+      background:rgba(7,7,7,.65);
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .brand{
+      font-family:"Space Grotesk";
+      font-weight:700;
+      letter-spacing:-1px;
+      font-size:20px;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      color:#bdbbb4;
+      font-size:14px;
+    }
+
+    .nav-links a{
+      transition:.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--gold);
+    }
+
+    .nav-cta{
+      border:1px solid var(--gold);
+      padding:10px 18px;
+      border-radius:30px;
+      font-size:13px;
+      color:var(--gold);
+      transition:.3s;
+    }
+
+    .nav-cta:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      padding-top:100px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:70px;
+      align-items:end;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      font-size:12px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:28px;
+    }
+
+    .hero h1{
+      font-family:"Space Grotesk";
+      font-size:clamp(60px,9vw,145px);
+      line-height:.86;
+      letter-spacing:-7px;
+      max-width:950px;
+    }
+
+    .hero h1 .outline{
+      color:transparent;
+      -webkit-text-stroke:1px #777;
+    }
+
+    .hero h1 .gold{
+      color:var(--gold);
+    }
+
+    .hero-copy{
+      max-width:420px;
+      margin-left:auto;
+      padding-bottom:12px;
+    }
+
+    .hero-copy p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:16px;
+      margin-bottom:30px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 22px;
+      border-radius:3px;
+      font-size:14px;
+      transition:.3s;
+    }
+
+    .btn-primary{
+      background:var(--gold);
+      color:#050505;
+      font-weight:700;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--line);
+      color:#ddd;
+    }
+
+    .btn-secondary:hover{
+      border-color:var(--gold);
+      color:var(--gold);
+    }
+
+    .hero-number{
+      position:absolute;
+      right:25px;
+      bottom:35px;
+      writing-mode:vertical-rl;
+      color:#555;
+      font-size:11px;
+      letter-spacing:3px;
+    }
+
+    /* MARQUEE */
+
+    .marquee{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+      padding:18px 0;
+      margin-top:30px;
+    }
+
+    .marquee-track{
+      display:flex;
+      width:max-content;
+      animation:move 22s linear infinite;
+    }
+
+    .marquee span{
+      font-family:"Space Grotesk";
+      font-size:14px;
+      color:#777;
+      margin-right:50px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .marquee strong{
+      color:var(--gold);
+    }
+
+    @keyframes move{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    /* SECTION */
+
+    section{
+      padding:140px 0;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:30px;
+      margin-bottom:60px;
+    }
+
+    .section-label{
+      color:var(--gold);
+      font-size:11px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .section-title{
+      font-family:"Space Grotesk";
+      font-size:clamp(40px,6vw,80px);
+      letter-spacing:-4px;
+      line-height:.95;
+    }
+
+    .section-description{
+      max-width:390px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* PROJECTS */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+    }
+
+    .project{
+      position:relative;
+      min-height:440px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      overflow:hidden;
+      transition:.5s;
+    }
+
+    .project:hover{
+      border-color:rgba(216,181,106,.5);
+      transform:translateY(-6px);
+    }
+
+    .project:nth-child(1){
+      grid-column:span 7;
+    }
+
+    .project:nth-child(2){
+      grid-column:span 5;
+    }
+
+    .project:nth-child(3){
+      grid-column:span 5;
+    }
+
+    .project:nth-child(4){
+      grid-column:span 7;
+    }
+
+    .project-art{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 70% 30%,rgba(216,181,106,.20),transparent 25%),
+        linear-gradient(135deg,#191919,#080808);
+    }
+
+    .project:nth-child(2) .project-art{
+      background:
+        radial-gradient(circle at 30% 70%,rgba(216,181,106,.18),transparent 28%),
+        linear-gradient(135deg,#111,#191919);
+    }
+
+    .project:nth-child(3) .project-art{
+      background:
+        radial-gradient(circle at 70% 70%,rgba(216,181,106,.15),transparent 25%),
+        linear-gradient(135deg,#181818,#090909);
+    }
+
+    .project:nth-child(4) .project-art{
+      background:
+        radial-gradient(circle at 50% 40%,rgba(216,181,106,.17),transparent 30%),
+        linear-gradient(135deg,#090909,#1b1b1b);
+    }
+
+    .project-art::after{
+      content:"";
+      position:absolute;
+      width:55%;
+      height:55%;
+      border:1px solid rgba(216,181,106,.22);
+      transform:rotate(-12deg);
+      right:8%;
+      top:15%;
+    }
+
+    .project-info{
+      position:absolute;
+      left:28px;
+      right:28px;
+      bottom:25px;
+      z-index:2;
+    }
+
+    .project-tag{
+      color:var(--gold);
+      font-size:10px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:9px;
+    }
+
+    .project h3{
+      font-family:"Space Grotesk";
+      font-size:28px;
+      letter-spacing:-1px;
+    }
+
+    .project p{
+      color:#999;
+      font-size:13px;
+      margin-top:7px;
+    }
+
+    /* CAPABILITIES */
+
+    .capabilities{
+      border-top:1px solid var(--line);
+    }
+
+    .cap-row{
+      display:grid;
+      grid-template-columns:80px 1fr 1fr;
+      gap:30px;
+      padding:30px 0;
+      border-bottom:1px solid var(--line);
+      align-items:center;
+      transition:.3s;
+    }
+
+    .cap-row:hover{
+      padding-left:15px;
+    }
+
+    .cap-number{
+      color:var(--gold);
+      font-size:12px;
+    }
+
+    .cap-row h3{
+      font-family:"Space Grotesk";
+      font-size:32px;
+    }
+
+    .cap-row p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:#0b0b0b;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:100px;
+    }
+
+    .about-big{
+      font-family:"Space Grotesk";
+      font-size:clamp(38px,5vw,70px);
+      line-height:1;
+      letter-spacing:-3px;
+    }
+
+    .about-big span{
+      color:var(--gold);
+    }
+
+    .about-text{
+      color:var(--muted);
+      line-height:1.9;
+      font-size:16px;
+      padding-top:10px;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      text-align:center;
+      padding-bottom:170px;
+    }
+
+    .contact h2{
+      font-family:"Space Grotesk";
+      font-size:clamp(55px,9vw,130px);
+      letter-spacing:-6px;
+      line-height:.85;
+    }
+
+    .contact h2 span{
+      color:var(--gold);
+    }
+
+    .contact p{
+      color:var(--muted);
+      max-width:500px;
+      margin:30px auto;
+      line-height:1.8;
+    }
+
+    .contact-buttons{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* FOOTER */
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:25px 0;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      color:#666;
+      font-size:12px;
+    }
+
+    .footer-inner strong{
+      color:var(--gold);
+    }
+
+    /* REVEAL */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(35px);
+      transition:1s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:none;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:800px){
+
+      .container{
+        width:min(var(--max),calc(100% - 28px));
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .nav-cta{
+        padding:9px 14px;
+      }
+
+      .hero{
+        min-height:auto;
+        padding:170px 0 90px;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:45px;
+      }
+
+      .hero h1{
+        font-size:clamp(55px,17vw,90px);
+        letter-spacing:-4px;
+      }
+
+      .hero-copy{
+        margin-left:0;
+      }
+
+      .hero-number{
+        display:none;
+      }
+
+      section{
+        padding:90px 0;
+      }
+
+      .section-head{
+        display:block;
+      }
+
+      .section-description{
+        margin-top:25px;
+      }
+
+      .projects{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+
+      .project:nth-child(1),
+      .project:nth-child(2),
+      .project:nth-child(3),
+      .project:nth-child(4){
+        grid-column:span 1;
+      }
+
+      .project{
+        min-height:380px;
+      }
+
+      .cap-row{
+        grid-template-columns:45px 1fr;
+      }
+
+      .cap-row p{
+        grid-column:2;
+      }
+
+      .cap-row h3{
+        font-size:25px;
+      }
+
+      .about-grid{
+        grid-template-columns:1fr;
+        gap:45px;
+      }
+
+      .contact h2{
+        font-size:18vw;
+        letter-spacing:-3px;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+        gap:10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<nav>
+  <div class="container nav-inner">
+
+    <a href="#" class="brand">
+      AHMED<span>.</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+    </div>
+
+    <a class="nav-cta"
+       href="https://wa.me/message/7HEO2MYJO2PMD1"
+       target="_blank">
+      Let's Talk
+    </a>
+
+  </div>
+</nav>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-grid">
+
+      <div class="reveal">
+
+        <div class="eyebrow">
+          Ahmed Abu Omar / Digital Creator
+        </div>
+
+        <h1>
+          I BUILD
+          <span class="outline">DIGITAL</span>
+          <span class="gold">EXPERIENCES.</span>
+        </h1>
+
+      </div>
+
+      <div class="hero-copy reveal">
+
+        <p>
+          Web design, digital products and professional CV experiences
+          designed with a clear purpose — to make ideas look valuable.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#work" class="btn btn-primary">
+            Explore Work
+          </a>
+
+          <a href="https://payhip.com/ahmedabuomar"
+             target="_blank"
+             class="btn btn-secondary">
+            Digital Store
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="hero-number">
+      01 / 04 — DIGITAL WORK
+    </div>
+
+  </section>
+
+
+  <!-- MARQUEE -->
+
+  <div class="marquee">
+
+    <div class="marquee-track">
+
+      <span>WEB DESIGN</span>
+      <span><strong>✦</strong></span>
+      <span>WEB DEVELOPMENT</span>
+      <span><strong>✦</strong></span>
+      <span>CV DESIGN</span>
+      <span><strong>✦</strong></span>
+      <span>DIGITAL PRODUCTS</span>
+      <span><strong>✦</strong></span>
+
+      <span>WEB DESIGN</span>
+      <span><strong>✦</strong></span>
+      <span>WEB DEVELOPMENT</span>
+      <span><strong>✦</strong></span>
+      <span>CV DESIGN</span>
+      <span><strong>✦</strong></span>
+      <span>DIGITAL PRODUCTS</span>
+      <span><strong>✦</strong></span>
+
+    </div>
+
+  </div>
+
+
+  <!-- WORK -->
+
+  <section id="work">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div>
+
+          <div class="section-label">
+            Selected Work
+          </div>
+
+          <h2 class="section-title">
+            Built with<br>
+            intention.
+          </h2>
+
+        </div>
+
+        <p class="section-description">
+          A growing collection of digital experiences,
+          website concepts and professional digital products.
+        </p>
+
+      </div>
+
+
+      <div class="projects">
+
+        <a href="https://payhip.com/b/7N0IC"
+           target="_blank"
+           class="project reveal">
+
+          <div class="project-art"></div>
+
+          <div class="project-info">
+
+            <div class="project-tag">
+              Web / Real Estate
+            </div>
+
+            <h3>NOVA Developments</h3>
+
+            <p>
+              Premium real-estate digital experience.
+            </p>
+
+          </div>
+
+        </a>
+
+
+        <a href="https://payhip.com/b/SnpTh"
+           target="_blank"
+           class="project reveal">
+
+          <div class="project-art"></div>
+
+          <div class="project-info">
+
+            <div class="project-tag">
+              Web / Restaurant
+            </div>
+
+            <h3>Restaurant System</h3>
+
+            <p>
+              Arabic + English / RTL + LTR.
+            </p>
+
+          </div>
+
+        </a>
+
+
+        <a href="https://payhip.com/b/Dy2bz"
+           target="_blank"
+           class="project reveal">
+
+          <div class="project-art"></div>
+
+          <div class="project-info">
+
+            <div class="project-tag">
+              Digital Product
+            </div>
+
+            <h3>Premium CV Collection</h3>
+
+            <p>
+              Professional resume templates.
+            </p>
+
+          </div>
+
+        </a>
+
+
+        <a href="https://payhip.com/ahmedabuomar"
+           target="_blank"
+           class="project reveal">
+
+          <div class="project-art"></div>
+
+          <div class="project-info">
+
+            <div class="project-tag">
+              Digital Store
+            </div>
+
+            <h3>Ahmed Digital Templates</h3>
+
+            <p>
+              Websites, CVs and digital resources.
+            </p>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+
+  <section id="services" class="capabilities">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div>
+
+          <div class="section-label">
+            Capabilities
+          </div>
+
+          <h2 class="section-title">
+            What I<br>
+            create.
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="cap-row reveal">
+
+        <div class="cap-number">01</div>
+
+        <h3>Web Design</h3>
+
+        <p>
+          Modern responsive interfaces focused on clarity,
+          visual hierarchy and conversion.
+        </p>
+
+      </div>
+
+
+      <div class="cap-row reveal">
+
+        <div class="cap-number">02</div>
+
+        <h3>Web Development</h3>
+
+        <p>
+          Clean HTML, CSS and JavaScript experiences
+          built for speed and mobile devices.
+        </p>
+
+      </div>
+
+
+      <div class="cap-row reveal">
+
+        <div class="cap-number">03</div>
+
+        <h3>CV Design</h3>
+
+        <p>
+          Professional resume systems designed to help
+          candidates present themselves with confidence.
+        </p>
+
+      </div>
+
+
+      <div class="cap-row reveal">
+
+        <div class="cap-number">04</div>
+
+        <h3>Digital Products</h3>
+
+        <p>
+          Practical templates and digital resources
+          created for real-world use.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about" class="about">
+
+    <div class="container about-grid">
+
+      <div class="about-big reveal">
+
+        DIGITAL
+        <span>WORK</span>
+        SHOULD
+        FEEL
+        <span>VALUABLE.</span>
+
+      </div>
+
+      <div class="about-text reveal">
+
+        <p>
+          I'm Ahmed Abu Omar, a digital creator focused on
+          web experiences, professional CV design and digital
+          products.
+        </p>
+
+        <br>
+
+        <p>
+          My approach is simple:
+          remove unnecessary complexity,
+          create strong visual direction,
+          and build products that people can actually use.
+        </p>
+
+        <br>
+
+        <p>
+          This portfolio is continuously evolving as new
+          projects and digital products are created.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact">
+
+    <div class="container reveal">
+
+      <div class="section-label">
+        Start a project
+      </div>
+
+      <h2>
+        LET'S MAKE<br>
+        <span>IT REAL.</span>
+      </h2>
+
+      <p>
+        Have a website idea, digital product or creative project?
+        Let's talk.
+      </p>
+
+      <div class="contact-buttons">
+
+        <a href="https://wa.me/message/7HEO2MYJO2PMD1"
+           target="_blank"
+           class="btn btn-primary">
+          WhatsApp
+        </a>
+
+        <a href="mailto:nadyahmed211@gmail.com"
+           class="btn btn-secondary">
+          Email Me
+        </a>
+
+        <a href="https://payhip.com/ahmedabuomar"
+           target="_blank"
+           class="btn btn-secondary">
+          Visit Store
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+      © 2026 <strong>Ahmed Abu Omar</strong>
+    </div>
+
+    <div>
+      Web Design · CV Design · Digital Products
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  /* CURSOR */
+
+  const cursor = document.querySelector(".cursor");
+
+  document.addEventListener("mousemove", e => {
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+  });
+
+
+  /* REVEAL */
+
+  const observer = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+
+  document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+  });
+
+</script>
+
+</body>
+  </html>
